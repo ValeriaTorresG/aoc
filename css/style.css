@@ -210,11 +210,6 @@ img, svg { max-width: 100%; }
   line-height: 0.95;
   letter-spacing: 0.01em;
 }
-.scene__label--vertical {
-  writing-mode: vertical-rl;
-  margin-bottom: 0;
-  margin-left: auto;
-}
 
 .scene__copy {
   max-width: 42ch;
@@ -518,7 +513,6 @@ output, .readout {
     padding-block: 5rem;
   }
   .scene--right .scene__stage { order: 0; }
-  .scene__label--vertical { writing-mode: horizontal-tb; margin-left: 0; margin-bottom: 1.25rem; }
   .dots em { display: none; }
 }
 
