@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RED CÓSMICA · El arte del cosmos</title>
+<meta name="description" content="Aléjate lo suficiente y las galaxias dejan de ser objetos para convertirse en puntos de luz sobre una espuma: filamentos, nodos y vacíos enormes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="article-page">
+
+<canvas id="starfield" class="starfield" aria-hidden="true"></canvas>
+<div class="progress" aria-hidden="true"><span id="progressBar" class="progress__bar"></span></div>
+
+<a class="back-link" href="index.html#red-cosmica">← EL ARTE DEL COSMOS</a>
+
+<header class="article-head">
+  <p class="scene__scale">ESCALA · ~100 MILLONES DE AÑOS LUZ</p>
+  <h1 class="article-title">RED CÓSMICA</h1>
+  <p class="article-lede">Aléjate lo suficiente y las galaxias dejan de ser objetos para convertirse en puntos de luz sobre una espuma: filamentos, nodos y vacíos enormes.</p>
+  <figure class="article-figure">
+    <div class="web-stage" style="--ratio: 600 / 340">
+      <canvas id="webHeroCanvas" class="web-canvas"></canvas>
+      <svg class="web-overlay" id="webHeroSvg" viewBox="0 0 600 340" aria-hidden="true"></svg>
+    </div>
+    <figcaption class="lab-caption">
+      Cada punto es una galaxia. Los filamentos y las paredes no están dibujados:
+      salen de cómo se reparte la materia.
+    </figcaption>
+  </figure>
+</header>
+
+<main class="article article--labs">
+  <section class="article-block reveal">
+    <p class="article-block__num">01</p>
+    <h2 class="article-block__title">La estructura más grande que existe</h2>
+    <p>A escalas de cientos de millones de años luz, la materia se organiza en una red: cúmulos densos en los nodos, filamentos de galaxias que los unen, paredes extendidas y, ocupando la mayor parte del volumen, vacíos casi desiertos. El vacío de Boötes mide unos 330 millones de años luz y contiene una fracción mínima de las galaxias que le corresponderían.</p>
+
+    <div class="block-lab">
+      <div class="web-stage" style="--ratio: 600 / 300">
+        <canvas id="anatomyCanvas" class="web-canvas"></canvas>
+        <svg class="web-overlay" id="anatomySvg" viewBox="0 0 600 300" role="img"
+             aria-label="Mapa de la red con sus cúmulos, filamentos, paredes y vacíos"></svg>
+      </div>
+      <div class="block-lab__controls">
+        <button class="btn btn--sm" data-layer="clusters" type="button" aria-pressed="true">CÚMULOS</button>
+        <button class="btn btn--sm" data-layer="filaments" type="button" aria-pressed="true">FILAMENTOS</button>
+        <button class="btn btn--sm" data-layer="walls" type="button" aria-pressed="false">PAREDES</button>
+        <button class="btn btn--sm" data-layer="voids" type="button" aria-pressed="false">VACÍOS</button>
+      </div>
+      <p class="block-lab__readout" id="anatomyReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">02</p>
+    <h2 class="article-block__title">De dónde salió</h2>
+    <p>De diferencias minúsculas. En los primeros instantes, las fluctuaciones cuánticas del universo primitivo se estiraron durante la inflación hasta hacerse cósmicas. El fondo de microondas nos las enseña congeladas: variaciones de una parte en cien mil. La gravedad tardó 13 800 millones de años en convertir ese ruido en esta arquitectura.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labSeeds" class="block-lab__art" role="img"
+           aria-label="Las diferencias de densidad del universo primitivo amplificadas por la gravedad"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="seedContrast">CONTRASTE</label>
+        <input id="seedContrast" type="range" min="1" max="60" step="1" value="12">
+        <button class="btn btn--sm" id="seedGrow" type="button">DEJAR ACTUAR A LA GRAVEDAD</button>
+      </div>
+      <p class="block-lab__readout" id="seedReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">03</p>
+    <h2 class="article-block__title">El corrimiento al rojo</h2>
+    <p>La luz de una galaxia lejana llega estirada. No es que la galaxia huya por el espacio como un coche por una carretera: es el espacio mismo el que se ha expandido mientras la luz viajaba, y con él la longitud de onda de todo lo que venía en camino. Las líneas oscuras del espectro —las huellas del hidrógeno, del calcio, del sodio— siguen guardando entre sí exactamente las mismas proporciones, pero aparecen todas corridas hacia el rojo. Medir ese corrimiento es medir cuánto ha crecido el universo desde que esa luz salió, y con la ley de Hubble-Lemaître, unos 70 km/s por megapársec, se convierte en distancia: es la regla con la que está hecho cualquier mapa como el de la sección siguiente. Andrómeda es la excepción que confirma la regla: está tan cerca que su caída hacia nosotros le gana a la expansión, y su luz nos llega corrida hacia el azul.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labRedshift" class="block-lab__art" role="img"
+           aria-label="Las líneas del espectro de una galaxia desplazándose hacia el rojo"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="redshiftZ">CORRIMIENTO z</label>
+        <input id="redshiftZ" type="range" min="-2" max="160" step="0.5" value="23">
+        <button class="btn btn--sm" id="redshiftPlay" type="button">RECORRER</button>
+      </div>
+      <div class="block-lab__controls">
+        <span class="block-lab__label">OBJETOS REALES</span>
+        <button class="btn btn--sm" data-z="-1" type="button">ANDRÓMEDA</button>
+        <button class="btn btn--sm" data-z="3.8" type="button">VIRGO</button>
+        <button class="btn btn--sm" data-z="23" type="button">COMA</button>
+        <button class="btn btn--sm" data-z="158" type="button">3C 273</button>
+      </div>
+      <p class="block-lab__readout" id="redshiftReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">04</p>
+    <h2 class="article-block__title">Cómo se mapeó</h2>
+    <p>En 1989, el sondeo del CfA reveló la primera Gran Muralla y dejó claro que las galaxias no estaban repartidas de forma uniforme. Después llegaron 2dF y el Sloan Digital Sky Survey, con millones de galaxias catalogadas, y simulaciones como Millennium o IllustrisTNG, que reproducen la misma red partiendo solo de gravedad y materia oscura.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labSurvey" class="block-lab__art" role="img"
+           aria-label="Cuña de un sondeo de corrimiento al rojo que se va rellenando al barrer el cielo"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="surveyAngle">APUNTA EL TELESCOPIO</label>
+        <input id="surveyAngle" type="range" min="0" max="100" step="0.5" value="50">
+        <button class="btn btn--sm" id="surveySweep" type="button">SONDEO COMPLETO</button>
+      </div>
+      <p class="block-lab__readout" id="surveyReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">05</p>
+    <h2 class="article-block__title">Dónde estamos</h2>
+    <p>La Vía Láctea pertenece al Grupo Local, que cae hacia el cúmulo de Virgo, que a su vez es parte de Laniakea, un supercúmulo definido en 2014 por el flujo de las galaxias: 520 millones de años luz de extremo a extremo. Nuestra dirección postal completa termina en un filamento cualquiera.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labAddress" class="block-lab__art" role="img"
+           aria-label="Zoom desde la Vía Láctea hasta el supercúmulo Laniakea"></svg>
+      <div class="block-lab__controls">
+        <button class="btn btn--sm" id="addressPrev" type="button">‹ ACERCAR</button>
+        <button class="btn btn--sm" id="addressNext" type="button">ALEJAR ›</button>
+      </div>
+      <p class="block-lab__readout" id="addressReadout">—</p>
+    </div>
+  </section>
+
+  <aside class="facts reveal">
+    <h2 class="facts__title">EN CIFRAS</h2>
+    <dl>
+      <dt>Vacío de Boötes</dt><dd>unos 330 millones de años luz</dd>
+      <dt>Supercúmulo Laniakea</dt><dd>unos 520 millones de años luz</dd>
+      <dt>Edad del universo</dt><dd>13 800 millones de años</dd>
+      <dt>Fluctuaciones del fondo cósmico</dt><dd>1 parte en 100 000</dd>
+      <dt>Primer gran mapa</dt><dd>CfA Redshift Survey · 1989</dd>
+    </dl>
+  </aside>
+</main>
+
+<nav class="article-nav">
+  <a class="article-nav__link article-nav__link--prev" href="halos.html"><span>ESCALA ANTERIOR</span><strong>HALOS</strong></a>
+  <span class="article-nav__spacer"></span>
+</nav>
+
+<footer class="outro outro--sm">
+  <div class="frame frame--sm"><p>SIGUE MIRANDO<br>HACIA ARRIBA</p></div>
+  <a class="back-to-top" href="index.html">VOLVER AL INICIO ↑</a>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/web.js"></script>
+<script src="js/web-blocks.js"></script>
+</body>
+</html>

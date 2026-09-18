@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ESTRELLAS · El arte del cosmos</title>
+<meta name="description" content="Una estrella es una explosión que lleva miles de millones de años sin llegar a ocurrir: la gravedad aprieta hacia dentro exactamente con la misma fuer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="article-page">
+
+<canvas id="starfield" class="starfield" aria-hidden="true"></canvas>
+<div class="progress" aria-hidden="true"><span id="progressBar" class="progress__bar"></span></div>
+
+<a class="back-link" href="index.html#estrellas">← EL ARTE DEL COSMOS</a>
+
+<header class="article-head">
+  <p class="scene__scale">ESCALA · ~10<sup>6</sup> KM</p>
+  <h1 class="article-title">ESTRELLAS</h1>
+  <p class="article-lede">Una estrella es una explosión que lleva miles de millones de años sin llegar a ocurrir: la gravedad aprieta hacia dentro exactamente con la misma fuerza con la que la radiación empuja hacia fuera.</p>
+  <figure class="article-figure">
+    <svg viewBox="0 0 600 340" class="figure-art" role="img" aria-label="Secuencia espectral de O a M">
+      <g class="axes"><path d="M40 250 H560 M550 242 L562 250 L550 258"/></g>
+      <circle cx="70" cy="160" r="30" fill="#A9C3FF"/>
+      <text class="axis-label" x="70" y="285">O</text>
+      <circle cx="148" cy="160" r="26" fill="#C8D6FF"/>
+      <text class="axis-label" x="148" y="285">B</text>
+      <circle cx="226" cy="160" r="22" fill="#EFE7DA"/>
+      <text class="axis-label" x="226" y="285">A</text>
+      <circle cx="304" cy="160" r="19" fill="#F6DCC8"/>
+      <text class="axis-label" x="304" y="285">F</text>
+      <circle cx="382" cy="160" r="16" fill="#F2BCA8"/>
+      <text class="axis-label" x="382" y="285">G</text>
+      <circle cx="460" cy="160" r="13" fill="#FF6B4A"/>
+      <text class="axis-label" x="460" y="285">K</text>
+      <circle cx="538" cy="160" r="10" fill="#E8452C"/>
+      <text class="axis-label" x="538" y="285">M</text>
+      <text class="axis-label" x="120" y="312">30 000 K</text>
+      <text class="axis-label" x="500" y="312">3 000 K</text>
+    </svg>
+  </figure>
+</header>
+
+<main class="article article--labs">
+  <section class="article-block reveal">
+    <p class="article-block__num">01</p>
+    <h2 class="article-block__title">Un equilibrio que dura eones</h2>
+    <p>En el núcleo del Sol, a unos 15 millones de grados, se fusionan cada segundo alrededor de 600 millones de toneladas de hidrógeno en helio. Unos cuatro millones de toneladas de esa masa se convierten en energía pura. La luz que sale tarda decenas de miles de años en abrirse paso hasta la superficie, y solo ocho minutos en llegar hasta aquí.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labBalance" class="block-lab__art" role="img"
+           aria-label="Una estrella que se comprime y vuelve sola a su tamaño de equilibrio"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="balanceSqueeze">APRIETA O ESTIRA</label>
+        <input id="balanceSqueeze" type="range" min="78" max="124" step="1" value="100">
+        <button class="btn btn--sm" id="balanceRelease" type="button">SOLTAR</button>
+      </div>
+      <p class="block-lab__readout" id="balanceReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">02</p>
+    <h2 class="article-block__title">El color es un termómetro</h2>
+    <p>Cuanto más caliente es un cuerpo, más corta es la longitud de onda en la que brilla: por eso las estrellas calientes tiran a azul y las frías a rojo. La clasificación espectral ordena esa escala en siete letras —O, B, A, F, G, K, M— que van de unos 30 000 K a unos 3 000 K. El Sol es una G2, con 5 772 K en su superficie: una estrella perfectamente corriente.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labPlanck" class="block-lab__art" role="img"
+           aria-label="Curva de Planck cuyo pico se desplaza con la temperatura"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="planckTemp">TEMPERATURA</label>
+        <input id="planckTemp" type="range" min="2200" max="40000" step="100" value="5772">
+      </div>
+      <p class="block-lab__readout" id="planckReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">03</p>
+    <h2 class="article-block__title">El diagrama que ordenó el cielo</h2>
+    <p>Hacia 1910, Hertzsprung y Russell tuvieron la idea de graficar luminosidad contra temperatura. Las estrellas no se repartieron al azar: se alinearon en una diagonal —la secuencia principal— con dos ramas aparte, las gigantes y las enanas blancas. Es a la vez un retrato de familia y una línea de tiempo.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labCluster" class="block-lab__art" role="img"
+           aria-label="Diagrama H-R de un cúmulo cuyo punto de salida baja al envejecer"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="clusterAge">EDAD DEL CÚMULO</label>
+        <input id="clusterAge" type="range" min="0" max="100" step="1" value="30">
+      </div>
+      <p class="block-lab__readout" id="clusterReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">04</p>
+    <h2 class="article-block__title">La masa decide el final</h2>
+    <p>Una enana roja quema su combustible con tal tacañería que puede durar más de un billón de años. El Sol tiene unos diez mil millones por delante, de los que ya gastó 4 600: terminará hinchándose como gigante roja y encogiendo hasta ser una enana blanca. Por encima de unas ocho masas solares el final es una supernova, y lo que queda es una estrella de neutrones o un agujero negro.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labLife" class="block-lab__art" role="img"
+           aria-label="La vida completa de una estrella según su masa, trazada sobre el diagrama H-R"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="lifeMass">MASA</label>
+        <input id="lifeMass" type="range" min="3" max="250" step="1" value="10">
+        <label class="block-lab__label" for="lifeProgress">VIDA</label>
+        <input id="lifeProgress" type="range" min="0" max="100" step="0.5" value="0">
+        <button class="btn btn--sm" id="lifePlay" type="button" aria-pressed="false">REPRODUCIR</button>
+      </div>
+      <p class="block-lab__readout" id="lifeReadout">—</p>
+    </div>
+  </section>
+
+  <aside class="facts reveal">
+    <h2 class="facts__title">EN CIFRAS</h2>
+    <dl>
+      <dt>Diámetro del Sol</dt><dd>1,39 millones de km</dd>
+      <dt>Temperatura en su superficie</dt><dd>5 772 K</dd>
+      <dt>Temperatura en su núcleo</dt><dd>unos 15 millones de K</dd>
+      <dt>Estrella más cercana</dt><dd>Próxima Centauri · 4,24 años luz</dd>
+      <dt>Vida de una enana roja</dt><dd>más de un billón de años</dd>
+    </dl>
+  </aside>
+</main>
+
+<nav class="article-nav">
+  <a class="article-nav__link article-nav__link--prev" href="planetas.html"><span>ESCALA ANTERIOR</span><strong>PLANETAS</strong></a>
+  <a class="article-nav__link article-nav__link--next" href="galaxias.html"><span>ESCALA SIGUIENTE</span><strong>GALAXIAS</strong></a>
+</nav>
+
+<footer class="outro outro--sm">
+  <div class="frame frame--sm"><p>SIGUE MIRANDO<br>HACIA ARRIBA</p></div>
+  <a class="back-to-top" href="index.html">VOLVER AL INICIO ↑</a>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/stars-blocks.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GALAXIAS · El arte del cosmos</title>
+<meta name="description" content="Una galaxia no es un montón de estrellas: es un sistema con estructura, rotación e historia, sostenido por algo que no vemos y girando alrededor de al">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="article-page">
+
+<canvas id="starfield" class="starfield" aria-hidden="true"></canvas>
+<div class="progress" aria-hidden="true"><span id="progressBar" class="progress__bar"></span></div>
+
+<a class="back-link" href="index.html#galaxias">← EL ARTE DEL COSMOS</a>
+
+<header class="article-head">
+  <p class="scene__scale">ESCALA · ~100 000 AÑOS LUZ</p>
+  <h1 class="article-title">GALAXIAS</h1>
+  <p class="article-lede">Una galaxia no es un montón de estrellas: es un sistema con estructura, rotación e historia, sostenido por algo que no vemos y girando alrededor de algo que tampoco.</p>
+  <figure class="article-figure">
+    <svg viewBox="0 0 600 340" class="figure-art" role="img" aria-label="Espiral, elíptica e irregular">
+      <ellipse class="galaxy-disc" cx="140" cy="150" rx="105" ry="105"/>
+      <circle class="dust" cx="148.5" cy="145.1" r="1.7"/>
+      <circle class="dust" cx="145.2" cy="152.0" r="1.3"/>
+      <circle class="dust" cx="145.0" cy="153.2" r="0.9"/>
+      <circle class="dust" cx="150.1" cy="148.7" r="0.9"/>
+      <circle class="dust" cx="149.5" cy="161.0" r="1.0"/>
+      <circle class="dust" cx="146.0" cy="159.8" r="2.1"/>
+      <circle class="dust" cx="150.1" cy="158.1" r="2.2"/>
+      <circle class="dust" cx="141.5" cy="166.0" r="1.2"/>
+      <circle class="dust" cx="141.5" cy="156.9" r="1.2"/>
+      <circle class="dust" cx="149.3" cy="159.0" r="1.6"/>
+      <circle class="dust" cx="145.1" cy="162.6" r="1.6"/>
+      <circle class="dust" cx="135.1" cy="159.0" r="1.1"/>
+      <circle class="dust" cx="141.6" cy="164.6" r="1.2"/>
+      <circle class="dust" cx="138.1" cy="165.1" r="1.2"/>
+      <circle class="dust" cx="138.8" cy="168.4" r="1.1"/>
+      <circle class="dust" cx="133.4" cy="165.6" r="2.0"/>
+      <circle class="dust" cx="133.3" cy="161.5" r="2.2"/>
+      <circle class="dust" cx="122.5" cy="162.2" r="1.9"/>
+      <circle class="dust" cx="120.9" cy="161.8" r="0.9"/>
+      <circle class="dust" cx="126.2" cy="163.9" r="1.6"/>
+      <circle class="dust" cx="127.3" cy="155.6" r="1.8"/>
+      <circle class="dust" cx="121.9" cy="157.0" r="1.4"/>
+      <circle class="dust" cx="124.1" cy="159.5" r="1.5"/>
+      <circle class="dust" cx="120.8" cy="144.3" r="1.8"/>
+      <circle class="dust" cx="120.0" cy="154.3" r="2.0"/>
+      <circle class="dust" cx="114.9" cy="142.7" r="1.7"/>
+      <circle class="dust" cx="111.6" cy="140.6" r="1.0"/>
+      <circle class="dust" cx="113.7" cy="131.8" r="1.9"/>
+      <circle class="dust" cx="115.1" cy="131.2" r="1.3"/>
+      <circle class="dust" cx="127.2" cy="125.8" r="1.4"/>
+      <circle class="dust" cx="124.9" cy="134.2" r="1.9"/>
+      <circle class="dust" cx="131.9" cy="123.1" r="1.4"/>
+      <circle class="dust" cx="127.9" cy="129.3" r="2.1"/>
+      <circle class="dust" cx="128.4" cy="117.4" r="1.1"/>
+      <circle class="dust" cx="133.4" cy="120.3" r="1.6"/>
+      <circle class="dust" cx="137.8" cy="112.5" r="1.4"/>
+      <circle class="dust" cx="143.6" cy="120.0" r="2.1"/>
+      <circle class="dust" cx="152.5" cy="119.4" r="1.7"/>
+      <circle class="dust" cx="156.8" cy="113.7" r="2.1"/>
+      <circle class="dust" cx="162.7" cy="126.5" r="1.9"/>
+      <circle class="dust" cx="161.7" cy="121.9" r="0.9"/>
+      <circle class="dust" cx="169.3" cy="119.9" r="0.9"/>
+      <circle class="dust" cx="167.2" cy="124.6" r="1.3"/>
+      <circle class="dust" cx="168.5" cy="126.3" r="1.0"/>
+      <circle class="dust" cx="172.2" cy="135.9" r="0.8"/>
+      <circle class="dust" cx="185.5" cy="144.4" r="1.0"/>
+      <circle class="dust" cx="178.6" cy="146.2" r="1.3"/>
+      <circle class="dust" cx="177.9" cy="159.0" r="2.2"/>
+      <circle class="dust" cx="183.0" cy="160.0" r="0.9"/>
+      <circle class="dust" cx="177.3" cy="164.3" r="1.2"/>
+      <circle class="dust" cx="186.1" cy="168.0" r="0.8"/>
+      <circle class="dust" cx="185.4" cy="179.4" r="1.0"/>
+      <circle class="dust" cx="176.5" cy="178.4" r="1.5"/>
+      <circle class="dust" cx="178.4" cy="195.8" r="1.8"/>
+      <circle class="dust" cx="163.3" cy="194.1" r="1.0"/>
+      <circle class="dust" cx="164.6" cy="201.1" r="1.9"/>
+      <circle class="dust" cx="151.8" cy="200.7" r="1.9"/>
+      <circle class="dust" cx="153.6" cy="212.6" r="1.9"/>
+      <circle class="dust" cx="143.4" cy="213.1" r="1.1"/>
+      <circle class="dust" cx="130.9" cy="208.8" r="0.8"/>
+      <circle class="dust" cx="115.3" cy="207.6" r="1.2"/>
+      <circle class="dust" cx="115.8" cy="215.8" r="1.4"/>
+      <circle class="dust" cx="110.4" cy="213.7" r="2.1"/>
+      <circle class="dust" cx="93.8" cy="199.1" r="1.1"/>
+      <circle class="dust" cx="83.1" cy="193.8" r="1.7"/>
+      <circle class="dust" cx="85.2" cy="196.4" r="1.5"/>
+      <circle class="dust" cx="74.8" cy="188.2" r="0.9"/>
+      <circle class="dust" cx="68.8" cy="181.1" r="1.9"/>
+      <circle class="dust" cx="65.0" cy="165.3" r="1.0"/>
+      <circle class="dust" cx="61.8" cy="152.6" r="1.9"/>
+      <circle class="dust" cx="135.6" cy="148.5" r="1.4"/>
+      <circle class="dust" cx="135.0" cy="151.6" r="1.0"/>
+      <circle class="dust" cx="123.5" cy="142.0" r="2.1"/>
+      <circle class="dust" cx="133.3" cy="140.3" r="2.0"/>
+      <circle class="dust" cx="136.1" cy="145.8" r="1.3"/>
+      <circle class="dust" cx="130.8" cy="136.8" r="0.8"/>
+      <circle class="dust" cx="137.6" cy="142.6" r="1.5"/>
+      <circle class="dust" cx="138.2" cy="138.1" r="2.0"/>
+      <circle class="dust" cx="138.1" cy="133.7" r="1.2"/>
+      <circle class="dust" cx="132.2" cy="132.9" r="1.6"/>
+      <circle class="dust" cx="133.5" cy="134.5" r="1.0"/>
+      <circle class="dust" cx="144.6" cy="132.8" r="1.4"/>
+      <circle class="dust" cx="142.1" cy="140.1" r="1.4"/>
+      <circle class="dust" cx="148.9" cy="134.2" r="1.5"/>
+      <circle class="dust" cx="145.7" cy="127.6" r="1.4"/>
+      <circle class="dust" cx="143.2" cy="127.8" r="1.9"/>
+      <circle class="dust" cx="145.3" cy="135.2" r="1.8"/>
+      <circle class="dust" cx="152.9" cy="134.2" r="1.5"/>
+      <circle class="dust" cx="155.0" cy="142.0" r="0.9"/>
+      <circle class="dust" cx="157.0" cy="136.3" r="1.2"/>
+      <circle class="dust" cx="161.8" cy="141.9" r="1.6"/>
+      <circle class="dust" cx="163.1" cy="149.9" r="1.4"/>
+      <circle class="dust" cx="162.2" cy="146.8" r="1.5"/>
+      <circle class="dust" cx="164.2" cy="148.9" r="1.5"/>
+      <circle class="dust" cx="161.7" cy="158.7" r="1.8"/>
+      <circle class="dust" cx="167.4" cy="161.9" r="1.2"/>
+      <circle class="dust" cx="162.6" cy="165.1" r="2.0"/>
+      <circle class="dust" cx="155.9" cy="156.8" r="1.4"/>
+      <circle class="dust" cx="153.7" cy="161.6" r="0.9"/>
+      <circle class="dust" cx="160.3" cy="172.3" r="2.1"/>
+      <circle class="dust" cx="150.9" cy="174.2" r="1.7"/>
+      <circle class="dust" cx="148.2" cy="179.1" r="2.2"/>
+      <circle class="dust" cx="146.2" cy="182.4" r="1.4"/>
+      <circle class="dust" cx="146.5" cy="184.9" r="2.0"/>
+      <circle class="dust" cx="138.2" cy="178.6" r="1.5"/>
+      <circle class="dust" cx="136.6" cy="176.3" r="1.2"/>
+      <circle class="dust" cx="137.7" cy="174.2" r="1.6"/>
+      <circle class="dust" cx="129.3" cy="174.1" r="1.3"/>
+      <circle class="dust" cx="127.4" cy="180.3" r="0.9"/>
+      <circle class="dust" cx="128.0" cy="182.7" r="2.2"/>
+      <circle class="dust" cx="111.3" cy="173.4" r="0.9"/>
+      <circle class="dust" cx="116.5" cy="170.7" r="1.0"/>
+      <circle class="dust" cx="107.6" cy="176.4" r="1.9"/>
+      <circle class="dust" cx="101.8" cy="161.8" r="2.1"/>
+      <circle class="dust" cx="103.2" cy="165.0" r="0.9"/>
+      <circle class="dust" cx="93.5" cy="159.8" r="1.4"/>
+      <circle class="dust" cx="91.9" cy="157.8" r="1.7"/>
+      <circle class="dust" cx="101.1" cy="140.0" r="2.0"/>
+      <circle class="dust" cx="90.5" cy="144.9" r="1.4"/>
+      <circle class="dust" cx="94.9" cy="134.3" r="2.1"/>
+      <circle class="dust" cx="95.3" cy="122.0" r="1.5"/>
+      <circle class="dust" cx="97.2" cy="115.5" r="1.0"/>
+      <circle class="dust" cx="97.8" cy="110.8" r="1.2"/>
+      <circle class="dust" cx="105.6" cy="112.9" r="1.2"/>
+      <circle class="dust" cx="113.3" cy="99.5" r="1.3"/>
+      <circle class="dust" cx="112.5" cy="95.9" r="0.8"/>
+      <circle class="dust" cx="129.1" cy="96.2" r="1.1"/>
+      <circle class="dust" cx="132.8" cy="98.5" r="0.9"/>
+      <circle class="dust" cx="145.5" cy="89.3" r="1.5"/>
+      <circle class="dust" cx="154.1" cy="87.7" r="1.5"/>
+      <circle class="dust" cx="160.7" cy="96.0" r="1.3"/>
+      <circle class="dust" cx="171.5" cy="93.5" r="1.7"/>
+      <circle class="dust" cx="174.4" cy="91.0" r="0.9"/>
+      <circle class="dust" cx="179.1" cy="90.9" r="1.8"/>
+      <circle class="dust" cx="189.2" cy="97.3" r="0.9"/>
+      <circle class="dust" cx="205.1" cy="113.6" r="1.7"/>
+      <circle class="dust" cx="204.3" cy="112.4" r="1.2"/>
+      <circle class="dust" cx="212.9" cy="119.9" r="1.4"/>
+      <circle class="dust" cx="215.2" cy="140.9" r="2.2"/>
+      <circle class="dust" cx="222.9" cy="141.4" r="2.2"/>
+      <circle class="galaxy-core" cx="140" cy="150" r="16"/>
+      <text class="axis-label" x="140" y="300">ESPIRAL</text>
+      <ellipse class="galaxy-bulge" cx="330" cy="150" rx="78" ry="58"/>
+      <ellipse class="galaxy-core" cx="330" cy="150" rx="30" ry="22"/>
+      <text class="axis-label" x="330" y="300">ELÍPTICA</text>
+      <path class="blob blob--violet" d="M460 130c20-40 90-30 100 5s10 70-30 80-80 10-90-25 5-30 20-60Z"/>
+      <circle class="dust" cx="496.3" cy="147.4" r="0.9"/>
+      <circle class="dust" cx="502.4" cy="159.8" r="1.7"/>
+      <circle class="dust" cx="487.1" cy="163.0" r="0.9"/>
+      <circle class="dust" cx="492.5" cy="119.4" r="1.5"/>
+      <circle class="dust" cx="473.5" cy="112.4" r="1.4"/>
+      <circle class="dust" cx="489.8" cy="171.5" r="1.7"/>
+      <circle class="dust" cx="533.8" cy="179.0" r="2.0"/>
+      <circle class="dust" cx="544.7" cy="150.9" r="1.4"/>
+      <circle class="dust" cx="553.7" cy="125.7" r="2.0"/>
+      <circle class="dust" cx="524.7" cy="114.6" r="2.2"/>
+      <circle class="dust" cx="545.8" cy="175.9" r="2.0"/>
+      <circle class="dust" cx="539.0" cy="124.6" r="1.7"/>
+      <circle class="dust" cx="512.9" cy="197.7" r="2.1"/>
+      <circle class="dust" cx="540.2" cy="171.3" r="2.2"/>
+      <circle class="dust" cx="528.0" cy="182.8" r="1.2"/>
+      <circle class="dust" cx="472.6" cy="124.0" r="1.4"/>
+      <circle class="dust" cx="478.9" cy="197.8" r="1.7"/>
+      <circle class="dust" cx="523.4" cy="175.8" r="1.9"/>
+      <circle class="dust" cx="511.6" cy="110.3" r="2.1"/>
+      <circle class="dust" cx="533.6" cy="162.8" r="1.7"/>
+      <circle class="dust" cx="526.0" cy="116.9" r="2.0"/>
+      <circle class="dust" cx="491.4" cy="117.8" r="1.3"/>
+      <circle class="dust" cx="532.0" cy="131.5" r="2.0"/>
+      <circle class="dust" cx="552.9" cy="161.9" r="1.5"/>
+      <circle class="dust" cx="510.7" cy="181.8" r="2.1"/>
+      <circle class="dust" cx="522.4" cy="177.5" r="1.0"/>
+      <circle class="dust" cx="482.5" cy="136.7" r="2.0"/>
+      <circle class="dust" cx="495.9" cy="169.6" r="0.9"/>
+      <circle class="dust" cx="475.2" cy="138.2" r="1.9"/>
+      <circle class="dust" cx="528.8" cy="180.9" r="1.3"/>
+      <circle class="dust" cx="513.9" cy="158.8" r="1.6"/>
+      <circle class="dust" cx="480.1" cy="203.8" r="1.2"/>
+      <circle class="dust" cx="553.1" cy="208.3" r="0.9"/>
+      <circle class="dust" cx="509.0" cy="196.1" r="2.4"/>
+      <circle class="dust" cx="508.2" cy="138.2" r="1.2"/>
+      <circle class="dust" cx="550.4" cy="132.1" r="1.8"/>
+      <circle class="dust" cx="482.0" cy="165.0" r="2.3"/>
+      <circle class="dust" cx="481.3" cy="196.1" r="1.7"/>
+      <circle class="dust" cx="545.4" cy="183.9" r="1.2"/>
+      <circle class="dust" cx="546.3" cy="161.0" r="0.9"/>
+      <text class="axis-label" x="505" y="300">IRREGULAR</text>
+    </svg>
+  </figure>
+</header>
+
+<main class="article article--labs">
+  <section class="article-block reveal">
+    <p class="article-block__num">01</p>
+    <h2 class="article-block__title">Nuestra casa</h2>
+    <p>La Vía Láctea es una espiral barrada de unos 100 000 años luz de diámetro y un disco de apenas 1 000 de grosor: cien veces más ancha que gruesa. Contiene entre cien mil y cuatrocientos mil millones de estrellas. El Sol está a unos 26 000 años luz del centro y tarda unos 230 millones de años en completar una vuelta; la última vez que pasó por este punto, en la Tierra empezaban los dinosaurios.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labHome" class="block-lab__art" role="img"
+           aria-label="Mapa de la Vía Láctea con sus brazos y la órbita del Sol"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="homeTilt">INCLINACIÓN</label>
+        <input id="homeTilt" type="range" min="0" max="90" step="1" value="20">
+        <label class="block-lab__label" for="homeTime">EL SOL EN EL TIEMPO</label>
+        <input id="homeTime" type="range" min="-460" max="460" step="10" value="0">
+      </div>
+      <p class="block-lab__readout" id="homeReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">02</p>
+    <h2 class="article-block__title">Tres formas y sus mezclas</h2>
+    <p>Hubble las ordenó en 1926 en un esquema que todavía usamos: espirales, con disco, brazos y gas suficiente para seguir fabricando estrellas; elípticas, más viejas, casi sin gas, con órbitas desordenadas; e irregulares, deformadas por encuentros con vecinas. Las elípticas gigantes suelen ser el resultado de fusiones.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labHubble" class="block-lab__art" role="img"
+           aria-label="Una misma galaxia deformándose a lo largo de la secuencia de Hubble"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="hubbleShape">SECUENCIA E → Sc</label>
+        <input id="hubbleShape" type="range" min="0" max="100" step="1" value="80">
+        <button class="btn btn--sm" id="hubbleBar" type="button" aria-pressed="false">CON BARRA</button>
+      </div>
+      <p class="block-lab__readout" id="hubbleReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">03</p>
+    <h2 class="article-block__title">Un monstruo en el centro</h2>
+    <p>En el corazón de casi toda galaxia grande hay un agujero negro supermasivo. El nuestro, Sagitario A*, tiene unos cuatro millones de masas solares, y el Event Horizon Telescope publicó su imagen en 2022, tres años después de la de M87*. Pese a su fama, su influencia gravitatoria directa alcanza solo a la región más interna de la galaxia.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labSgr" class="block-lab__art" role="img"
+           aria-label="La estrella S2 orbitando Sagitario A*, con la masa ajustable"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="sgrMass">MASA DE SGR A* (MILLONES)</label>
+        <input id="sgrMass" type="range" min="10" max="100" step="1" value="20">
+      </div>
+      <p class="block-lab__readout" id="sgrReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">04</p>
+    <h2 class="article-block__title">Todo se está fusionando</h2>
+    <p>Andrómeda se acerca a unos 110 km/s y chocará con nosotros dentro de unos 4 500 millones de años. Será una colisión sin apenas colisiones: las estrellas están tan separadas entre sí que lo que se deforma es la estructura, no los objetos. De las dos espirales saldrá, probablemente, una sola elíptica.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labMerger" class="block-lab__art" role="img"
+           aria-label="Simulación del encuentro entre la Vía Láctea y Andrómeda"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="mergerTime">FUTURO</label>
+        <input id="mergerTime" type="range" min="0" max="212" step="1" value="0">
+        <button class="btn btn--sm" id="mergerPlay" type="button" aria-pressed="false">REPRODUCIR</button>
+      </div>
+      <p class="block-lab__readout" id="mergerReadout">—</p>
+    </div>
+  </section>
+
+  <aside class="facts reveal">
+    <h2 class="facts__title">EN CIFRAS</h2>
+    <dl>
+      <dt>Diámetro de la Vía Láctea</dt><dd>unos 100 000 años luz</dd>
+      <dt>Grosor del disco</dt><dd>unos 1 000 años luz</dd>
+      <dt>Estrellas</dt><dd>entre 100 000 y 400 000 millones</dd>
+      <dt>Sagitario A*</dt><dd>4 millones de masas solares</dd>
+      <dt>Galaxias en el universo observable</dt><dd>entre 2 × 10¹¹ y 2 × 10¹², según el método</dd>
+    </dl>
+  </aside>
+</main>
+
+<nav class="article-nav">
+  <a class="article-nav__link article-nav__link--prev" href="estrellas.html"><span>ESCALA ANTERIOR</span><strong>ESTRELLAS</strong></a>
+  <a class="article-nav__link article-nav__link--next" href="halos.html"><span>ESCALA SIGUIENTE</span><strong>HALOS</strong></a>
+</nav>
+
+<footer class="outro outro--sm">
+  <div class="frame frame--sm"><p>SIGUE MIRANDO<br>HACIA ARRIBA</p></div>
+  <a class="back-to-top" href="index.html">VOLVER AL INICIO ↑</a>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/galaxies.js"></script>
+<script src="js/galaxies-blocks.js"></script>
+</body>
+</html>

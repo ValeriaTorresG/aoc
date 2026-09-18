@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HALOS · El arte del cosmos</title>
+<meta name="description" content="Las galaxias giran demasiado rápido para la materia que se ve. O la gravedad funciona distinto a gran escala, o hay mucho más ahí fuera de lo que pode">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="article-page">
+
+<canvas id="starfield" class="starfield" aria-hidden="true"></canvas>
+<div class="progress" aria-hidden="true"><span id="progressBar" class="progress__bar"></span></div>
+
+<a class="back-link" href="index.html#halos">← EL ARTE DEL COSMOS</a>
+
+<header class="article-head">
+  <p class="scene__scale">ESCALA · ~1 MILLÓN DE AÑOS LUZ</p>
+  <h1 class="article-title">HALOS</h1>
+  <p class="article-lede">Las galaxias giran demasiado rápido para la materia que se ve. O la gravedad funciona distinto a gran escala, o hay mucho más ahí fuera de lo que podemos mirar.</p>
+  <figure class="article-figure article-figure--lab">
+    <svg viewBox="0 0 600 340" class="figure-art" id="haloArtFull" role="img"
+         aria-label="Laboratorio de halos: curva de rotación calculada en vivo"></svg>
+    <figcaption class="lab-caption">
+      La curva no está dibujada: se calcula con un disco tipo Kuzmin y un halo NFW.
+      Las nubes de gas orbitan a la velocidad que marca esa misma curva.
+    </figcaption>
+    <div class="lab-controls">
+      <div class="control">
+        <label for="haloMassFull">MASA DEL HALO</label>
+        <input id="haloMassFull" type="range" min="0" max="100" step="1" value="85">
+        <output id="haloMassOut">—</output>
+      </div>
+      <div class="control control--row">
+        <button class="btn btn--sm" id="haloPlay" type="button" aria-pressed="false">PAUSAR</button>
+        <button class="btn btn--sm" id="haloParticlesBtn" type="button" aria-pressed="true">PARTÍCULAS</button>
+        <button class="btn btn--sm" id="haloExpectedBtn" type="button" aria-pressed="true">CURVA ESPERADA</button>
+      </div>
+      <p class="readout lab-readout" id="haloReadoutFull">—</p>
+    </div>
+  </figure>
+</header>
+
+<main class="article article--labs">
+  <section class="article-block reveal">
+    <p class="article-block__num">01</p>
+    <h2 class="article-block__title">La anomalía</h2>
+    <p>Fritz Zwicky ya avisó en 1933 de que las galaxias del cúmulo de Coma se movían como si el cúmulo pesara mucho más de lo visible. En los años setenta, Vera Rubin y Kent Ford midieron con precisión cómo giran las espirales y encontraron algo que no cuadraba: la velocidad no cae al alejarse del centro, como pasaría si toda la masa estuviera donde está la luz, sino que se mantiene plana hasta el borde.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labAnomaly" class="block-lab__art block-lab__art--drag" role="img"
+           aria-label="Una rendija móvil sobre una galaxia de canto va midiendo su curva de rotación"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="anomalySlit">RENDIJA</label>
+        <input id="anomalySlit" type="range" min="95" max="505" step="1" value="412">
+        <button class="btn btn--sm" id="anomalySweep" type="button">BARRIDO AUTOMÁTICO</button>
+      </div>
+      <p class="block-lab__readout" id="anomalyReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">02</p>
+    <h2 class="article-block__title">Qué es un halo</h2>
+    <p>La explicación estándar es que cada galaxia está inmersa en una esfera de materia oscura mucho mayor que su parte luminosa. El halo de la Vía Láctea mide entre uno y dos millones de años luz de lado a lado y suma entre uno y un billón y medio de masas solares: el disco brillante es apenas la decoración del centro.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labScale" class="block-lab__art" role="img"
+           aria-label="La vista se aleja del disco visible hasta abarcar todo el halo"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="scaleZoom">ALEJAR LA VISTA</label>
+        <input id="scaleZoom" type="range" min="0" max="100" step="1" value="12">
+      </div>
+      <p class="block-lab__readout" id="scaleReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">03</p>
+    <h2 class="article-block__title">Las otras pruebas</h2>
+    <p>No es solo la rotación. La luz de objetos lejanos se curva al pasar junto a los cúmulos más de lo que su materia visible permite; en el Cúmulo Bala, la masa medida por esa curvatura quedó separada del gas caliente tras la colisión; y las proporciones del fondo cósmico de microondas encajan con un universo hecho de un 5 % de materia ordinaria, un 27 % de materia oscura y un 68 % de energía oscura.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labLens" class="block-lab__art block-lab__art--drag" role="img"
+           aria-label="Un cúmulo que se puede arrastrar y curva la luz de las galaxias de fondo"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="lensMass">MASA DEL CÚMULO</label>
+        <input id="lensMass" type="range" min="0" max="100" step="1" value="45">
+        <button class="btn btn--sm" id="lensTruth" type="button" aria-pressed="false">POSICIONES REALES</button>
+      </div>
+      <p class="block-lab__readout" id="lensReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">04</p>
+    <h2 class="article-block__title">Lo que no sabemos</h2>
+    <p>Ningún experimento ha detectado todavía una partícula de materia oscura, pese a décadas buscando WIMPs y axiones. Las alternativas que modifican la gravedad, como MOND, describen bien las galaxias aisladas pero se quedan cortas con los cúmulos y con el fondo cósmico. Es, probablemente, el mayor agujero abierto de la física actual.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labTheory" class="block-lab__art" role="img"
+           aria-label="Comparación esquemática entre materia oscura y MOND en una galaxia y en un cúmulo"></svg>
+      <div class="block-lab__controls">
+        <button class="btn btn--sm" id="theoryDark" type="button" aria-pressed="true">MATERIA OSCURA</button>
+        <button class="btn btn--sm" id="theoryMond" type="button" aria-pressed="false">MOND</button>
+      </div>
+      <p class="block-lab__readout" id="theoryReadout">—</p>
+    </div>
+  </section>
+
+  <aside class="facts reveal">
+    <h2 class="facts__title">EN CIFRAS</h2>
+    <dl>
+      <dt>Halo de la Vía Láctea</dt><dd>1–2 millones de años luz</dd>
+      <dt>Masa total estimada</dt><dd>1–1,5 × 10¹² masas solares</dd>
+      <dt>Materia ordinaria del universo</dt><dd>5 %</dd>
+      <dt>Materia oscura</dt><dd>27 %</dd>
+      <dt>Energía oscura</dt><dd>68 %</dd>
+    </dl>
+  </aside>
+</main>
+
+<nav class="article-nav">
+  <a class="article-nav__link article-nav__link--prev" href="galaxias.html"><span>ESCALA ANTERIOR</span><strong>GALAXIAS</strong></a>
+  <a class="article-nav__link article-nav__link--next" href="red-cosmica.html"><span>ESCALA SIGUIENTE</span><strong>RED CÓSMICA</strong></a>
+</nav>
+
+<footer class="outro outro--sm">
+  <div class="frame frame--sm"><p>SIGUE MIRANDO<br>HACIA ARRIBA</p></div>
+  <a class="back-to-top" href="index.html">VOLVER AL INICIO ↑</a>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/halos.js"></script>
+<script src="js/halos-blocks.js"></script>
+</body>
+</html>

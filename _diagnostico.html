@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El arte del cosmos</title>
+<meta name="description" content="Una pieza interactiva sobre la belleza del cosmos, de los planetas a la red cósmica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Campo de estrellas de fondo (canvas, dibujado en js/main.js) -->
+<canvas id="starfield" class="starfield" aria-hidden="true"></canvas>
+
+<!-- Barra de progreso de scroll -->
+<div class="progress" aria-hidden="true"><span id="progressBar" class="progress__bar"></span></div>
+
+<!-- Navegación lateral: un punto por escala -->
+<nav class="dots" aria-label="Escalas">
+  <a href="#planetas"    data-dot="planetas"><span></span><em>Planetas</em></a>
+  <a href="#estrellas"   data-dot="estrellas"><span></span><em>Estrellas</em></a>
+  <a href="#galaxias"    data-dot="galaxias"><span></span><em>Galaxias</em></a>
+  <a href="#halos"       data-dot="halos"><span></span><em>Halos</em></a>
+  <a href="#red-cosmica" data-dot="red-cosmica"><span></span><em>Red cósmica</em></a>
+</nav>
+
+<!-- ============================= HERO ============================= -->
+<header class="hero" id="top">
+  <div class="frame">
+    <h1 class="hero__title">EL ARTE<br>DEL COSMOS</h1>
+  </div>
+  <p class="hero__kicker">ILUSTRACIÓN INTERACTIVA</p>
+
+  <p class="hero__intro">
+    Cinco escalas, de lo pequeño a lo inabarcable: un planeta, una estrella,
+    una galaxia, su halo invisible y la red que lo sostiene todo.
+    Desplázate, arrastra y toca.
+  </p>
+
+  <a class="scroll-cue" href="#planetas">
+    <span>EMPEZAR</span>
+    <svg viewBox="0 0 24 48" aria-hidden="true"><path d="M12 2 V40 M5 33 L12 41 L19 33" /></svg>
+  </a>
+
+  <!-- Ilustración del hero: sistema orbital decorativo -->
+  <svg class="hero__art" viewBox="0 0 600 600" aria-hidden="true">
+    <path class="blob blob--violet" d="M120 200C60 110 180 20 300 40c130 22 230-10 250 90 20 100-60 150-40 230 20 85-120 190-250 170S170 420 130 360c-40-60-10-160-10-160Z"/>
+    <g class="hero__rings">
+      <ellipse class="ring" cx="300" cy="300" rx="230" ry="90"/>
+      <ellipse class="ring" cx="300" cy="300" rx="170" ry="150" transform="rotate(-25 300 300)"/>
+      <ellipse class="ring" cx="300" cy="300" rx="110" ry="200" transform="rotate(20 300 300)"/>
+    </g>
+    <circle class="sun" cx="300" cy="300" r="52"/>
+    <circle class="sun-core" cx="286" cy="286" r="22"/>
+    <g class="axes">
+      <path d="M60 300 H540 M530 292 L542 300 L530 308"/>
+      <path d="M300 540 V60 M292 70 L300 58 L308 70"/>
+    </g>
+  </svg>
+</header>
+
+<main>
+
+  <!-- =========================== 1. PLANETAS =========================== -->
+  <!-- Las órbitas las resuelve js/planets.js: aquí solo va el fondo -->
+  <section class="scene scene--left" id="planetas" data-scene="planetas">
+    <div class="scene__stage">
+      <svg class="art" id="planetArt" viewBox="0 0 600 420" role="img"
+           aria-label="Cuatro planetas recorriendo órbitas elípticas alrededor de su estrella">
+        <path class="blob blob--cream" d="M40 210C10 120 120 40 250 60c130 20 250-30 300 60s-40 170-20 230-160 90-280 60S70 300 40 210Z"/>
+      </svg>
+    </div>
+
+    <div class="scene__text">
+      <p class="scene__scale">ESCALA · ~10<sup>4</sup> KM</p>
+      <h2 class="scene__label">PLANETAS</h2>
+      <p class="scene__copy">
+        Nada en el cielo va en línea recta ni a velocidad constante. Cada mundo cae
+        eternamente hacia su estrella siguiendo una elipse, corriendo cuando está cerca
+        y demorándose cuando está lejos. Pasa el cursor por uno para ver sus cuentas.
+      </p>
+      <div class="control">
+        <label for="planetSpeed">VELOCIDAD</label>
+        <input id="planetSpeed" type="range" min="0" max="3" step="0.05" value="1">
+        <output id="planetSpeedOut">1,00×</output>
+      </div>
+      <p class="readout" id="planetReadout">—</p>
+      <a class="btn btn--ghost scene__more" href="planetas.html">SABER MÁS →</a>
+    </div>
+  </section>
+
+  <!-- ============================ 2. ESTRELLAS ============================ -->
+  <!-- La estrella la modela js/stars.js: aquí solo va el fondo -->
+  <section class="scene scene--right" id="estrellas" data-scene="estrellas">
+    <div class="scene__stage">
+      <svg class="art" id="starArt" viewBox="0 0 600 420" role="img"
+           aria-label="Una estrella cuya masa decide su color, su tamaño y su vida">
+        <path class="blob blob--violet" d="M60 160C40 60 180 30 300 50s230-40 270 60-30 150 0 210-180 80-300 70S90 340 70 280s-10-120-10-120Z"/>
+      </svg>
+    </div>
+
+    <div class="scene__text">
+      <p class="scene__scale">ESCALA · ~10<sup>6</sup> KM</p>
+      <h2 class="scene__label">ESTRELLAS</h2>
+      <p class="scene__copy">
+        De una estrella solo hay que elegir una cosa: cuánta materia se juntó al nacer.
+        A partir de ahí todo está decidido —el color, el tamaño, el brillo y cuánto va a
+        durar—. Mueve la masa y mira dónde cae en el diagrama.
+      </p>
+      <div class="control">
+        <label for="starMass">MASA</label>
+        <input id="starMass" type="range" min="0" max="100" step="0.5" value="40">
+        <output id="starMassOut">1,0 masas solares</output>
+      </div>
+      <p class="readout" id="starDetail">—</p>
+      <a class="btn btn--ghost scene__more" href="estrellas.html">SABER MÁS →</a>
+    </div>
+  </section>
+
+  <!-- =========================== 3. GALAXIAS =========================== -->
+  <!-- El disco lo siembra y lo hace girar js/galaxies.js -->
+  <section class="scene scene--left" id="galaxias" data-scene="galaxias">
+    <div class="scene__stage">
+      <svg class="art" id="galaxyArt" viewBox="0 0 600 420" role="img"
+           aria-label="Disco galáctico en rotación diferencial con brazos espirales">
+        <path class="blob blob--cream" d="M70 200C30 110 140 40 270 60s250-20 280 80-50 140-30 210-170 70-290 50S110 290 70 200Z"/>
+      </svg>
+    </div>
+
+    <div class="scene__text">
+      <p class="scene__scale">ESCALA · ~100 000 AÑOS LUZ</p>
+      <h2 class="scene__label">GALAXIAS</h2>
+      <p class="scene__copy">
+        El disco no gira como un plato: por dentro va mucho más rápido que por fuera.
+        Si los brazos fueran materia, en un par de vueltas estarían enrollados —pruébalo—.
+        Son una onda que recorre el disco, y las estrellas se encienden al atravesarla.
+      </p>
+      <div class="control">
+        <label for="galaxyTilt">INCLINACIÓN</label>
+        <input id="galaxyTilt" type="range" min="0" max="90" step="1" value="35">
+        <output id="galaxyTiltOut">35°</output>
+      </div>
+      <div class="control control--row">
+        <button class="btn btn--sm" id="galaxyWave" type="button" aria-pressed="true">ONDA DE DENSIDAD</button>
+        <button class="btn btn--sm" id="galaxyMatter" type="button" aria-pressed="false">BRAZOS DE MATERIA</button>
+        <button class="btn btn--sm" id="galaxyReset" type="button">REINICIAR</button>
+      </div>
+      <p class="readout" id="galaxyClock">—</p>
+      <a class="btn btn--ghost scene__more" href="galaxias.html">SABER MÁS →</a>
+    </div>
+  </section>
+
+  <!-- ============================= 4. HALOS ============================= -->
+  <!-- La ilustración la construye js/halos.js: el SVG solo aporta el fondo -->
+  <section class="scene scene--right" id="halos" data-scene="halos">
+    <div class="scene__stage">
+      <svg class="art" id="haloArt" viewBox="0 0 600 420" role="img"
+           aria-label="Halo de materia oscura y curva de rotación calculada en vivo">
+        <path class="blob blob--violet" d="M50 180C30 80 170 20 300 40s240-30 260 70-20 160 10 220-200 80-320 60S70 280 50 180Z"/>
+      </svg>
+    </div>
+
+    <div class="scene__text">
+      <p class="scene__scale">ESCALA · ~1 MILLÓN DE AÑOS LUZ</p>
+      <h2 class="scene__label scene__label--vertical">HALOS</h2>
+      <p class="scene__copy">
+        Las galaxias giran demasiado rápido para la materia que se ve. Añade masa
+        invisible y observa las dos cosas que ocurren a la vez: la curva de rotación
+        se aplana y el gas de las afueras acelera. Pasa el cursor por una nube para
+        situarla en la curva.
+      </p>
+      <div class="control">
+        <label for="haloMass">MASA DEL HALO</label>
+        <input id="haloMass" type="range" min="0" max="100" step="1" value="0">
+        <output id="haloRatio">Solo materia visible</output>
+      </div>
+      <div class="control control--row">
+        <button class="btn" id="haloPreset" type="button" aria-pressed="false">AÑADIR EL HALO</button>
+        <span class="readout" id="haloVel">Gas a 34 kpc: — km/s</span>
+      </div>
+      <a class="btn btn--ghost scene__more" href="halos.html">SABER MÁS →</a>
+    </div>
+  </section>
+
+  <!-- ========================== 5. RED CÓSMICA ========================== -->
+  <!-- La red la siembra js/web.js: el SVG solo aporta el fondo -->
+  <section class="scene scene--left" id="red-cosmica" data-scene="red-cosmica">
+    <div class="scene__stage">
+      <div class="web-stage">
+        <canvas id="webCanvas" class="web-canvas"></canvas>
+        <svg class="web-overlay" id="webArt" viewBox="0 0 600 420" role="img"
+             aria-label="Red cósmica formada por miles de galaxias que se agrupan con el tiempo"></svg>
+      </div>
+    </div>
+
+    <div class="scene__text">
+      <p class="scene__scale">ESCALA · ~100 MILLONES DE AÑOS LUZ</p>
+      <h2 class="scene__label">RED CÓSMICA</h2>
+      <p class="scene__copy">
+        A la mayor escala el universo se parece a una espuma. Y no empezó así: mueve
+        el tiempo hacia atrás y verás la materia casi repartida por igual, antes de que
+        la gravedad la fuera vaciando de los huecos y amontonando en los nodos.
+      </p>
+      <div class="control">
+        <label for="webTime">TIEMPO CÓSMICO</label>
+        <input id="webTime" type="range" min="0" max="100" step="1" value="100">
+        <output id="webAge">hoy · 13 800 millones de años</output>
+      </div>
+      <div class="control control--row">
+        <button class="btn" id="webPlay" type="button" aria-pressed="false">REPRODUCIR</button>
+        <span class="readout" id="webReadout">—</span>
+      </div>
+      <a class="btn btn--ghost scene__more" href="red-cosmica.html">SABER MÁS →</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================= OUTRO ============================= -->
+<footer class="outro">
+  <div class="frame frame--sm">
+    <p>SIGUE MIRANDO<br>HACIA ARRIBA</p>
+  </div>
+  <a class="back-to-top" href="#top">VOLVER AL INICIO ↑</a>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/main.js"></script>
+<script src="js/planets.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/galaxies.js"></script>
+<script src="js/halos.js"></script>
+<script src="js/web.js"></script>
+
+<div id="sonda" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#000;color:#5f5;
+  font:15px/1.6 monospace;padding:14px;white-space:pre-wrap;border-bottom:3px solid #5f5">
+  midiendo… espera 6 segundos</div>
+<script>
+  window.__log = [];
+  addEventListener('error', function (e) {
+    window.__log.push('ERROR: ' + e.message + ' @' + (e.filename || '').split('/').pop() + ':' + e.lineno);
+  });
+  var _e = console.error;
+  console.error = function () { window.__log.push('console.error: ' + [].slice.call(arguments).map(String).join(' ')); _e.apply(console, arguments); };
+
+  addEventListener('DOMContentLoaded', function () {
+    var planeta = document.querySelector('#planetArt .planet-body');
+    var pos = function (el) { return el ? (el.getAttribute('transform') || '?') : 'NO EXISTE'; };
+    var p0 = pos(planeta);
+
+    setTimeout(function () {
+      var play = document.getElementById('webPlay');
+      var barra = document.getElementById('webTime');
+      var etiqueta0 = play ? play.textContent.trim() : 'NO EXISTE';
+      var barra0 = barra ? barra.value : '?';
+      if (play) play.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+      setTimeout(function () {
+        document.getElementById('sonda').textContent =
+          'reducir movimiento del sistema: ' + matchMedia('(prefers-reduced-motion: reduce)').matches + '\n'
+          + 'planeta al cargar:  ' + p0 + '\n'
+          + 'planeta 3 s después: ' + pos(planeta) + '   <- si son iguales, las órbitas están congeladas\n'
+          + 'botón de la red: "' + etiqueta0 + '" -> "' + (play ? play.textContent.trim() : '?') + '"\n'
+          + 'barra de tiempo: ' + barra0 + ' -> ' + (barra ? barra.value : '?') + '   <- si no sube, reproducir no corre\n'
+          + 'canvas de la red: ' + (document.getElementById('webCanvas') ? document.getElementById('webCanvas').width + ' px de ancho' : 'NO EXISTE') + '\n'
+          + (window.__log.length ? '\n' + window.__log.join('\n') : '\nsin errores de JavaScript');
+      }, 3000);
+    }, 3000);
+  });
+</script>
+</body>
+</html>

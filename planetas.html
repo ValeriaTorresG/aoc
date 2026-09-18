@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PLANETAS · El arte del cosmos</title>
+<meta name="description" content="Un planeta es lo que queda cuando el disco de polvo que rodea a una estrella recién nacida se ordena: granos que chocan, se pegan y en unos pocos mill">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="article-page">
+
+<canvas id="starfield" class="starfield" aria-hidden="true"></canvas>
+<div class="progress" aria-hidden="true"><span id="progressBar" class="progress__bar"></span></div>
+
+<a class="back-link" href="index.html#planetas">← EL ARTE DEL COSMOS</a>
+
+<header class="article-head">
+  <p class="scene__scale">ESCALA · ~10<sup>4</sup> KM</p>
+  <h1 class="article-title">PLANETAS</h1>
+  <p class="article-lede">Un planeta es lo que queda cuando el disco de polvo que rodea a una estrella recién nacida se ordena: granos que chocan, se pegan y en unos pocos millones de años se convierten en mundos.</p>
+  <figure class="article-figure">
+    <svg viewBox="0 0 600 340" class="figure-art" role="img" aria-label="Órbitas elípticas alrededor de una estrella">
+      <g class="axes">
+        <path d="M40 190 H560 M550 182 L562 190 L550 198"/>
+        <path d="M300 320 V30 M292 42 L300 28 L308 42"/>
+      </g>
+      <ellipse class="ring" cx="300" cy="190" rx="90" ry="40"/>
+      <ellipse class="ring" cx="300" cy="190" rx="160" ry="72"/>
+      <ellipse class="ring" cx="300" cy="190" rx="235" ry="108"/>
+      <circle class="sun" cx="300" cy="190" r="30"/>
+      <circle class="planet planet--coral" cx="382" cy="208" r="12"/>
+      <g transform="translate(160 160)">
+        <ellipse class="planet-ring" rx="34" ry="12"/>
+        <circle class="planet planet--blush" r="18"/>
+      </g>
+      <circle class="planet planet--cream" cx="512" cy="230" r="9"/>
+      <text class="axis-label" x="300" y="332">PERIHELIO · AFELIO</text>
+    </svg>
+  </figure>
+</header>
+
+<main class="article article--labs">
+  <section class="article-block reveal">
+    <p class="article-block__num">01</p>
+    <h2 class="article-block__title">Qué cuenta como planeta</h2>
+    <p>Desde 2006 la Unión Astronómica Internacional pide tres cosas: orbitar el Sol, tener gravedad suficiente para ser casi esférico y haber despejado su vecindad orbital. Plutón cumple las dos primeras y falla la tercera —comparte su órbita con miles de cuerpos del cinturón de Kuiper—, y por eso hoy se clasifica como planeta enano.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labDefinition" class="block-lab__art" role="img"
+           aria-label="Los tres requisitos de la UAI comprobados sobre un cuerpo que crece"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="defMass">MASA</label>
+        <input id="defMass" type="range" min="180" max="250" step="1" value="222">
+      </div>
+      <div class="block-lab__controls">
+        <span class="block-lab__label">CUERPOS REALES</span>
+        <button class="btn btn--sm" data-body="7.35e22|1|La Luna" type="button">LA LUNA</button>
+        <button class="btn btn--sm" data-body="9.4e20|0|Ceres" type="button">CERES</button>
+        <button class="btn btn--sm" data-body="1.3e22|0|Plutón" type="button">PLUTÓN</button>
+        <button class="btn btn--sm" data-body="3.3e23|0|Mercurio" type="button">MERCURIO</button>
+        <button class="btn btn--sm" data-body="5.97e24|0|La Tierra" type="button">LA TIERRA</button>
+      </div>
+      <p class="block-lab__readout" id="defReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">02</p>
+    <h2 class="article-block__title">Por qué las órbitas son elipses</h2>
+    <p>Kepler lo describió en 1609: la órbita es una elipse con la estrella en uno de sus focos, el planeta barre áreas iguales en tiempos iguales —corre cuando está cerca, se demora cuando está lejos— y el cuadrado del periodo es proporcional al cubo del semieje mayor. Newton explicó en 1687 de dónde salía todo eso: una sola ley de gravitación que decae con el cuadrado de la distancia.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labKepler" class="block-lab__art" role="img"
+           aria-label="Un planeta barriendo áreas iguales en tiempos iguales"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="keplerEcc">EXCENTRICIDAD</label>
+        <input id="keplerEcc" type="range" min="0" max="82" step="1" value="50">
+      </div>
+      <p class="block-lab__readout" id="keplerReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">03</p>
+    <h2 class="article-block__title">Mundos de roca y mundos de gas</h2>
+    <p>Cerca de la estrella hace demasiado calor para que el hielo sobreviva, así que solo quedan silicatos y metales: planetas rocosos y pequeños. Pasada la llamada línea de nieve, el hielo se suma al inventario, los núcleos crecen rápido y algunos llegan a ser lo bastante masivos como para capturar hidrógeno y helio del disco. Así nacen los gigantes gaseosos.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labSnow" class="block-lab__art" role="img"
+           aria-label="El disco de formación y su línea de nieve, que se mueve con la luz de la estrella"></svg>
+      <div class="block-lab__controls">
+        <label class="block-lab__label" for="snowLum">LUZ DE LA ESTRELLA</label>
+        <input id="snowLum" type="range" min="0" max="100" step="1" value="57">
+      </div>
+      <p class="block-lab__readout" id="snowReadout">—</p>
+    </div>
+  </section>
+  <section class="article-block reveal">
+    <p class="article-block__num">04</p>
+    <h2 class="article-block__title">El cielo está lleno</h2>
+    <p>Desde 51 Pegasi b en 1995 se han confirmado más de 5 500 exoplanetas. Casi todos se detectan por tránsito —la estrella se atenúa un instante cuando el planeta pasa por delante— o por velocidad radial, midiendo el bamboleo que el planeta le provoca a su estrella. Lo que hemos encontrado no se parece a casa: júpiteres calientes que completan una órbita en días y supertierras sin equivalente en el sistema solar.</p>
+
+    <div class="block-lab">
+      <svg viewBox="0 0 600 300" id="labDetection" class="block-lab__art" role="img"
+           aria-label="Los dos métodos principales para detectar exoplanetas"></svg>
+      <div class="block-lab__controls">
+        <button class="btn btn--sm" id="detectTransit" type="button" aria-pressed="true">TRÁNSITO</button>
+        <button class="btn btn--sm" id="detectRV" type="button" aria-pressed="false">VELOCIDAD RADIAL</button>
+        <label class="block-lab__label" for="detectSize">TAMAÑO DEL PLANETA</label>
+        <input id="detectSize" type="range" min="5" max="150" step="1" value="112">
+      </div>
+      <p class="block-lab__readout" id="detectReadout">—</p>
+    </div>
+  </section>
+
+  <aside class="facts reveal">
+    <h2 class="facts__title">EN CIFRAS</h2>
+    <dl>
+      <dt>Diámetro de la Tierra</dt><dd>12 742 km</dd>
+      <dt>Diámetro de Júpiter</dt><dd>139 820 km</dd>
+      <dt>1 unidad astronómica</dt><dd>149,6 millones de km</dd>
+      <dt>Exoplanetas confirmados</dt><dd>más de 5 500</dd>
+      <dt>Primer exoplaneta en una estrella de tipo solar</dt><dd>51 Pegasi b · 1995</dd>
+    </dl>
+  </aside>
+</main>
+
+<nav class="article-nav">
+  <span class="article-nav__spacer"></span>
+  <a class="article-nav__link article-nav__link--next" href="estrellas.html"><span>ESCALA SIGUIENTE</span><strong>ESTRELLAS</strong></a>
+</nav>
+
+<footer class="outro outro--sm">
+  <div class="frame frame--sm"><p>SIGUE MIRANDO<br>HACIA ARRIBA</p></div>
+  <a class="back-to-top" href="index.html">VOLVER AL INICIO ↑</a>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/planets.js"></script>
+<script src="js/planets-blocks.js"></script>
+</body>
+</html>

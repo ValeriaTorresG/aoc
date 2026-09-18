@@ -1,0 +1,1034 @@
+/* ============================================================
+   El arte del cosmos — hoja de estilos base
+   Cinco escalas: planetas → estrellas → galaxias → halos → red cósmica
+   Paleta: azul profundo + coral + rosa pálido + crema
+   ============================================================ */
+
+:root {
+  /* Color */
+  --ink:        #070819;  /* fondo espacio profundo */
+  --ink-2:      #0E1130;  /* fondo alterno */
+  --violet:     #1E2270;  /* azul del cartel de referencia, oscurecido */
+  --violet-2:   #2B2F8C;
+  --coral:      #E8452C;
+  --coral-soft: #FF6B4A;
+  --blush:      #F2BCA8;
+  --cream:      #EFE7DA;
+  --ice:        #A9C3FF;  /* estrellas calientes */
+  --line:       rgba(239, 231, 218, 0.55);
+
+  /* Tipografía */
+  --display: "Archivo Black", "Helvetica Neue", Impact, sans-serif;
+  --text:    "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  /* Ritmo */
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --ease:   cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--text);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; }
+
+/* ---------------- Fondo de estrellas + barra de progreso ---------------- */
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: rgba(239, 231, 218, 0.12);
+  z-index: 50;
+}
+.progress__bar {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--coral);
+}
+
+/* ---------------- Navegación de puntos ---------------- */
+
+.dots {
+  position: fixed;
+  right: clamp(0.75rem, 2vw, 2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 40;
+}
+.dots a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--cream);
+}
+.dots span {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--cream);
+  border-radius: 50%;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.dots em {
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.dots a:hover em { opacity: 0.8; transform: none; }
+.dots a.is-active span { background: var(--coral); border-color: var(--coral); transform: scale(1.3); }
+.dots a.is-active em { opacity: 1; transform: none; }
+
+/* ---------------- Hero ---------------- */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  padding: clamp(3rem, 10vh, 8rem) var(--gutter) 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.frame {
+  border: 3px solid var(--cream);
+  padding: clamp(1rem, 3vw, 2.25rem) clamp(1.5rem, 6vw, 4rem);
+  max-width: 100%;
+}
+.frame--sm { border-width: 2px; }
+
+.hero__title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+}
+
+.hero__kicker {
+  margin: 1rem 0 0;
+  font-weight: 700;
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  letter-spacing: 0.35em;
+  color: var(--blush);
+}
+
+.hero__intro {
+  max-width: 48ch;
+  margin: 2rem 0 0;
+  color: rgba(239, 231, 218, 0.75);
+}
+
+.hero__art {
+  width: min(100%, 620px);
+  margin-top: -2rem;
+  order: 3;
+}
+.hero__rings { transform-origin: 300px 300px; animation: spin 90s linear infinite; }
+
+.scroll-cue {
+  order: 4;
+  margin-top: 1rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+}
+.scroll-cue svg {
+  width: 18px;
+  fill: none;
+  stroke: var(--coral);
+  stroke-width: 2;
+  animation: nudge 2.4s ease-in-out infinite;
+}
+
+/* ---------------- Escenas ---------------- */
+
+.scene {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  padding: clamp(4rem, 12vh, 9rem) var(--gutter);
+}
+.scene--right .scene__stage { order: 2; }
+
+.scene__stage { position: relative; }
+.art { width: 100%; height: auto; overflow: visible; }
+
+/* Marcador de escala: hilo conductor de toda la pieza */
+.scene__scale {
+  margin: 0 0 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--coral-soft);
+}
+.scene__scale sup { font-size: 0.65em; }
+
+.scene__label {
+  margin: 0 0 1.25rem;
+  font-family: var(--display);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+}
+.scene__label--vertical {
+  writing-mode: vertical-rl;
+  margin-bottom: 0;
+  margin-left: auto;
+}
+
+.scene__copy {
+  max-width: 42ch;
+  color: rgba(239, 231, 218, 0.78);
+}
+
+/* Aparición al entrar en pantalla (la clase la añade el IntersectionObserver) */
+.scene__stage,
+.scene__text {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.scene.is-visible .scene__stage,
+.scene.is-visible .scene__text { opacity: 1; transform: none; }
+.scene.is-visible .scene__text { transition-delay: 0.15s; }
+
+/* ---------------- Controles ---------------- */
+
+.control {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 24rem;
+}
+.control--row { flex-direction: row; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+.control label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--blush);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: var(--line);
+  outline-offset: 6px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--coral);
+  cursor: grab;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 20px; height: 20px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--coral);
+  cursor: grab;
+}
+
+output, .readout {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: rgba(239, 231, 218, 0.6);
+}
+
+.btn {
+  font-family: var(--text);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--cream);
+  background: transparent;
+  border: 2px solid var(--cream);
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.btn:hover, .btn:focus-visible { background: var(--coral); border-color: var(--coral); }
+.btn[aria-pressed="true"] { background: var(--coral); border-color: var(--coral); }
+
+.btn--ghost { display: inline-block; text-decoration: none; }
+.scene__more { margin-top: 1.75rem; }
+
+/* ---------------- Vocabulario gráfico compartido ---------------- */
+
+.blob { opacity: 0.9; }
+.blob--violet { fill: var(--violet); }
+.blob--cream  { fill: var(--cream); opacity: 0.08; }
+
+.axes {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.axis-label {
+  fill: rgba(239, 231, 218, 0.5);
+  font-family: var(--text);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-anchor: middle;
+}
+/* En CSS el anclaje gana al atributo del SVG, así que aquí se le devuelve
+   la palabra a cada rótulo que pide alinearse por su izquierda o su derecha */
+.axis-label[text-anchor="start"] { text-anchor: start; }
+.axis-label[text-anchor="end"] { text-anchor: end; }
+
+.ring {
+  fill: none;
+  stroke: var(--blush);
+  stroke-width: 1.5;
+  opacity: 0.7;
+}
+
+.sun      { fill: var(--coral); }
+.sun-core { fill: var(--blush); opacity: 0.85; }
+
+.star-label {
+  fill: var(--blush);
+  font-family: var(--text);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+}
+
+/* Escena 1 — planetas · las órbitas las resuelve js/planets.js */
+.planet--coral { fill: var(--coral-soft); }
+.planet--blush { fill: var(--blush); }
+.planet--cream { fill: var(--cream); }
+.planet--night { opacity: 0.28; }
+.planet-body { cursor: pointer; }
+.orbit-path { opacity: 0.35; }
+.orbit-trail { fill: none; stroke: var(--blush); stroke-width: 2.5; stroke-linecap: round; opacity: 0.35; }
+.moon-dot { fill: var(--cream); opacity: 0.9; }
+.planet-ring {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 2;
+  opacity: 0.8;
+  /* fill-box para girar sobre el propio anillo y no sobre el origen del viewBox */
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-18deg);
+}
+
+/* Escena 2 — estrellas · las modela js/stars.js */
+.star-body { fill: var(--coral); transition: fill 0.35s var(--ease); }
+.star-corona { fill: var(--coral); opacity: 0.16; transition: opacity 0.4s var(--ease); }
+.grain { fill: var(--cream); opacity: 0.14; pointer-events: none; }
+.flare { fill: none; stroke: var(--blush); stroke-width: 3; stroke-linecap: round; }
+.sun-ref { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 4 6; }
+
+.ms-line { fill: none; stroke: var(--blush); stroke-width: 2; opacity: 0.5; }
+.hr-sun { fill: var(--cream); }
+.hr-marker { stroke: var(--ink); stroke-width: 2; transition: fill 0.35s var(--ease); }
+
+/* Escena 3 — galaxias · la siembra js/galaxies.js */
+.galaxy-disc { fill: var(--violet-2); opacity: 0.28; }
+.galaxy-disc--flat { opacity: 0.55; }
+.galaxy-bulge { fill: var(--coral); opacity: 0.6; }
+.galaxy-core  { fill: var(--blush); }
+
+.arm-pattern { transition: opacity 0.5s var(--ease); }
+.arm-wave {
+  fill: none;
+  stroke: var(--blush);
+  stroke-width: 16;
+  stroke-linecap: round;
+  opacity: 0.16;
+}
+.disc-star { fill: var(--cream); opacity: 0.75; transition: fill 0.25s var(--ease); }
+.disc-star.is-forming { fill: var(--coral-soft); opacity: 1; }
+.sun-marker { fill: var(--coral); stroke: var(--cream); stroke-width: 1.5; }
+.sun-tag {
+  fill: var(--blush);
+  font-family: var(--text);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  pointer-events: none;
+}
+
+/* Escena 4 — halos · la construye js/halos.js */
+
+.halo-particles { transition: opacity 0.4s var(--ease); }
+.halo-particles.is-drifting { animation: spin 300s linear infinite; }
+.halo-particle { fill: var(--blush); }
+
+.halo-ring {
+  fill: none;
+  stroke: var(--blush);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 12;
+  transition: opacity 0.4s var(--ease), r 0.6s var(--ease);
+}
+
+/* Nubes de gas que trazan la curva */
+.tracer-orbit { fill: none; stroke: var(--line); stroke-width: 1; opacity: 0.3; }
+.tracer {
+  fill: var(--cream);
+  cursor: pointer;
+  transition: fill 0.2s var(--ease);
+}
+.tracer:hover { fill: var(--coral-soft); }
+.tracer-label {
+  fill: var(--blush);
+  font-family: var(--text);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+}
+
+/* Gráfico de la curva de rotación */
+.curve { fill: none; stroke-width: 3; stroke-linecap: round; }
+.curve--expected { stroke: var(--line); stroke-dasharray: 5 8; }
+.curve--live { stroke: var(--coral); }
+.marker__dot { fill: var(--coral-soft); transition: r 0.2s var(--ease), fill 0.2s var(--ease); }
+.marker__guide { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 5; opacity: 0.6; }
+.marker.is-lit .marker__dot { fill: var(--cream); r: 8; }
+.plot-label { font-size: 11px; letter-spacing: 0.15em; }
+.plot-note {
+  fill: var(--blush);
+  font-family: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  transition: fill 0.4s var(--ease);
+}
+.plot-note.is-flat { fill: var(--coral-soft); }
+
+/* Escena 5 — red cósmica · la siembra js/web.js sobre <canvas> */
+.web-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--ratio, 600 / 420);
+}
+.web-canvas,
+.web-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.web-canvas { cursor: crosshair; touch-action: none; }
+.web-overlay { pointer-events: none; overflow: visible; }
+
+.void-ring, .void-tag { transition: opacity 0.5s var(--ease); }
+.void-ring {
+  fill: none;
+  stroke: var(--blush);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 9;
+  opacity: 0.5;
+}
+.void-tag {
+  fill: var(--blush);
+  font-family: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+/* ---------------- Outro ---------------- */
+
+.outro {
+  position: relative;
+  z-index: 1;
+  min-height: 70svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 6rem var(--gutter);
+  text-align: center;
+}
+.outro p {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.1;
+}
+.back-to-top {
+  color: var(--blush);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+}
+
+/* ---------------- Animaciones ---------------- */
+
+@keyframes spin  { to { transform: rotate(360deg); } }
+@keyframes twinkle { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+@keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 900px) {
+  .scene {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-block: 5rem;
+  }
+  .scene--right .scene__stage { order: 0; }
+  .scene__label--vertical { writing-mode: horizontal-tb; margin-left: 0; margin-bottom: 1.25rem; }
+  .dots em { display: none; }
+}
+
+@media (max-width: 560px) {
+  .dots { display: none; }
+  .hero__art { margin-top: 0; }
+}
+
+/* ---------------- Accesibilidad ---------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .scene__stage, .scene__text { opacity: 1; transform: none; }
+}
+
+
+/* ============================================================
+   Páginas de detalle (planetas.html, estrellas.html, …)
+   ============================================================ */
+
+.article-page { padding-bottom: 2rem; }
+
+.back-link {
+  position: fixed;
+  top: clamp(1rem, 3vh, 2rem);
+  left: clamp(1rem, 4vw, 3rem);
+  z-index: 45;
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  background: rgba(7, 8, 25, 0.75);
+  border: 1px solid var(--line);
+  padding: 0.6rem 1rem;
+  backdrop-filter: blur(6px);
+}
+.back-link:hover { background: var(--coral); border-color: var(--coral); }
+
+.article-head {
+  position: relative;
+  z-index: 1;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(6rem, 16vh, 11rem) var(--gutter) 0;
+  text-align: center;
+}
+.article-head .scene__scale { margin-bottom: 1rem; }
+
+.article-title {
+  margin: 0 0 1.5rem;
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 11vw, 6rem);
+  line-height: 0.95;
+}
+
+.article-lede {
+  max-width: 54ch;
+  margin: 0 auto;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  color: var(--blush);
+}
+
+.article-figure {
+  margin: clamp(2.5rem, 6vw, 4rem) auto 0;
+  max-width: 46rem;
+}
+.figure-art { width: 100%; height: auto; overflow: visible; }
+.dust { fill: var(--cream); opacity: 0.8; }
+
+.article-figure--lab { max-width: 52rem; }
+
+.lab-caption {
+  margin: 1.25rem auto 0;
+  max-width: 46ch;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(239, 231, 218, 0.55);
+}
+
+.lab-controls {
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 1.1rem;
+}
+.lab-controls .control { margin-top: 0; max-width: 30rem; width: 100%; }
+.lab-readout { margin: 0; font-variant-numeric: tabular-nums; }
+.btn--sm { padding: 0.5rem 1rem; font-size: 0.65rem; }
+
+.article {
+  position: relative;
+  z-index: 1;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vh, 5rem) var(--gutter) 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.article-block__num {
+  margin: 0 0 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--coral-soft);
+}
+.article-block__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2.4vw, 1.8rem);
+  line-height: 1.1;
+}
+.article-block p { margin: 0; color: rgba(239, 231, 218, 0.78); }
+
+.facts {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--line);
+}
+.facts__title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+}
+.facts dl {
+  margin: 1.75rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem 2.5rem;
+}
+.facts dt {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blush);
+}
+.facts dd {
+  margin: 0.35rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+}
+
+.article-nav {
+  position: relative;
+  z-index: 1;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 4rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+.article-nav__spacer { flex: 1; }
+.article-nav__link {
+  flex: 0 1 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.5rem;
+  border: 2px solid var(--line);
+  color: var(--cream);
+  text-decoration: none;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.article-nav__link:hover { border-color: var(--coral); background: rgba(232, 69, 44, 0.12); }
+.article-nav__link--next { text-align: right; margin-left: auto; }
+.article-nav__link span { font-size: 0.65rem; letter-spacing: 0.25em; color: var(--blush); }
+.article-nav__link strong { font-family: var(--display); font-weight: 400; font-size: 1.15rem; }
+
+.outro--sm { min-height: auto; padding-block: 3rem 4rem; }
+
+/* Aparición genérica (la marca js/common.js) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .article { grid-template-columns: 1fr; }
+  .article-nav { flex-direction: column; }
+  .article-nav__link { flex: 1 1 auto; }
+  .article-nav__link--next { text-align: left; margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   Laboratorios de cada bloque de halos.html (js/halos-blocks.js)
+   ============================================================ */
+
+/* halos.html lleva una figura interactiva por bloque: una sola columna */
+.article--labs {
+  grid-template-columns: 1fr;
+  max-width: 58rem;
+  gap: clamp(3rem, 6vw, 4.5rem);
+}
+.article--labs .article-block p { max-width: 68ch; }
+
+.block-lab {
+  margin-top: 1.6rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid rgba(239, 231, 218, 0.16);
+}
+.block-lab__art {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none;
+}
+.block-lab__art--drag { cursor: crosshair; }
+
+.block-lab__controls {
+  margin-top: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.block-lab__controls input[type="range"] { flex: 1 1 8rem; }
+.block-lab__label {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: var(--blush);
+}
+.block-lab__readout {
+  margin: 0.85rem 0 0;
+  min-height: 2.6em;
+  font-size: 0.8rem;
+  color: rgba(239, 231, 218, 0.6);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 01 · rendija y medidas */
+.slit__line { stroke: var(--cream); stroke-width: 2; opacity: 0.85; }
+.slit__dot  { fill: var(--cream); }
+.slit.is-red  .slit__line { stroke: var(--coral); }
+.slit.is-red  .slit__dot  { fill: var(--coral); }
+.slit.is-blue .slit__line { stroke: var(--ice); }
+.slit.is-blue .slit__dot  { fill: var(--ice); }
+.measure-dot {
+  fill: var(--shift, var(--coral));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pop 0.45s var(--ease) both;
+}
+.plot-label--dim { opacity: 0.5; }
+
+/* 02 · escala */
+.scale-halo {
+  fill: var(--violet-2);
+  opacity: 0.2;
+  stroke: var(--blush);
+  stroke-width: 1;
+  stroke-dasharray: 5 12;
+}
+.satellite { fill: var(--cream); opacity: 0.85; }
+.scale-tag {
+  fill: var(--blush);
+  font-family: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  transition: opacity 0.3s var(--ease);
+}
+.scale-tag--disc { fill: var(--coral-soft); }
+.scale-bar__line { fill: none; stroke: var(--line); stroke-width: 1.5; }
+
+/* 03 · lente gravitacional */
+.source { fill: var(--blush); opacity: 0.7; transition: fill 0.3s var(--ease), opacity 0.3s var(--ease); }
+.source.is-arc { fill: var(--cream); opacity: 0.95; }
+.source-ghost { fill: var(--line); transition: opacity 0.35s var(--ease); }
+.lens { cursor: grab; }
+.lens__glow { fill: var(--violet-2); opacity: 0.55; }
+.lens__core { fill: var(--coral); }
+.einstein-ring {
+  fill: none;
+  stroke: var(--coral-soft);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 8;
+  opacity: 0.7;
+  animation: dash 3s linear infinite;
+}
+
+/* 04 · dos explicaciones */
+.panel-title {
+  fill: var(--cream);
+  font-family: var(--display);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+.data-point { fill: var(--cream); }
+.data-error { stroke: var(--line); stroke-width: 1.5; }
+.model-curve { stroke-width: 2.5; }
+.mass-bar { transition: height 0.5s var(--ease), y 0.5s var(--ease); }
+.mass-bar--needed { fill: var(--blush); opacity: 0.45; }
+.mass-bar--model  { fill: var(--coral); }
+.gap-tag {
+  fill: var(--blush);
+  font-family: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  transition: fill 0.3s var(--ease);
+}
+.gap-tag.is-gap { fill: var(--coral-soft); }
+
+@keyframes pop  { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes dash { to { stroke-dashoffset: -48; } }
+
+/* ============================================================
+   Laboratorios de red-cosmica.html (js/web-blocks.js)
+   ============================================================ */
+
+.seed-cell { shape-rendering: crispEdges; }
+
+.wedge {
+  fill: rgba(30, 34, 112, 0.35);
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 4 8;
+}
+.survey-galaxy {
+  fill: var(--line);
+  opacity: 0.25;
+  transition: fill 0.4s var(--ease), opacity 0.4s var(--ease), r 0.4s var(--ease);
+}
+.survey-galaxy.is-seen { fill: var(--cream); opacity: 1; }
+.survey-beam { stroke: var(--coral); stroke-width: 2; opacity: 0.85; }
+.survey-eye { fill: var(--coral); }
+
+.addr-dot { transition: opacity 0.35s var(--ease); }
+.addr-dot--home { fill: var(--coral); }
+.addr-dot--major { fill: var(--blush); }
+.addr-dot--minor { fill: var(--cream); opacity: 0.7; }
+.addr-dot--far { fill: var(--line); opacity: 0.6; }
+.addr-dot--attractor { fill: var(--coral-soft); }
+.addr-tag {
+  fill: var(--blush);
+  font-family: var(--text);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+.addr-ring { fill: none; stroke: var(--line); stroke-dasharray: 5 10; opacity: 0.45; }
+.addr-level {
+  fill: var(--cream);
+  font-family: var(--display);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+}
+.addr-flow { transition: opacity 0.4s var(--ease); }
+.flow-arrow {
+  fill: none;
+  stroke: var(--coral-soft);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+
+.btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.btn:disabled:hover { background: transparent; border-color: var(--cream); }
+
+/* ============================================================
+   Laboratorios de galaxias.html (js/galaxies-blocks.js)
+   ============================================================ */
+
+.galaxy-bar { fill: var(--coral); opacity: 0.85; transition: opacity 0.3s var(--ease); }
+.home-arm {
+  fill: none;
+  stroke: var(--blush);
+  stroke-width: 11;
+  stroke-linecap: round;
+  opacity: 0.18;
+}
+.home-arm-tag {
+  fill: var(--blush);
+  font-family: var(--text);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  transition: opacity 0.3s var(--ease);
+}
+.sun-orbit { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 6; opacity: 0.6; }
+.thickness { transition: opacity 0.3s var(--ease); }
+.thickness__line { fill: none; stroke: var(--coral-soft); stroke-width: 1.5; }
+
+.hubble-stars .disc-star { opacity: 0.8; }
+
+.sgr-orbit { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 5 7; }
+.sgr-bh__glow { fill: var(--violet-2); opacity: 0.55; }
+.sgr-bh__core { fill: var(--ink); stroke: var(--coral); stroke-width: 2; }
+.sgr-star { fill: var(--cream); transition: fill 0.3s var(--ease); }
+.is-fitted .sgr-star { fill: var(--coral-soft); }
+.is-fitted .sgr-orbit { stroke: var(--coral); opacity: 0.8; }
+
+.merger-dot--0 { fill: var(--cream); opacity: 0.8; }
+.merger-dot--1 { fill: var(--blush); opacity: 0.8; }
+.merger-core--0 { fill: var(--coral); }
+.merger-core--1 { fill: var(--coral-soft); }
+
+/* ============================================================
+   Laboratorios de estrellas.html (js/stars-blocks.js)
+   ============================================================ */
+
+.star-ghost { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 4 7; }
+.star-core-glow { fill: var(--cream); transition: opacity 0.2s var(--ease); }
+.force { fill: none; stroke-width: 2.5; stroke-linecap: round; }
+.force--gravity { stroke: var(--blush); }
+.force--radiation { stroke: var(--coral-soft); }
+
+.gauge-track { fill: rgba(239, 231, 218, 0.14); }
+.gauge-fill { fill: var(--coral); transition: width 0.12s linear; }
+.gauge-value {
+  fill: rgba(239, 231, 218, 0.72);
+  font-family: var(--text);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.peak-line { stroke: var(--coral-soft); stroke-width: 1.5; stroke-dasharray: 3 5; }
+.peak-tag {
+  fill: var(--coral-soft);
+  font-family: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.cluster-star { transition: opacity 0.35s var(--ease); }
+.cluster-star.is-dwarf { fill: var(--ice); }
+.cluster-star.is-giant { stroke: var(--coral); stroke-width: 1; }
+
+.life-track { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 4 6; }
+.life-shell { fill: none; stroke: var(--blush); stroke-width: 3; transition: opacity 0.3s var(--ease); }
+
+@keyframes simmer { 0%, 100% { opacity: 0.07; } 50% { opacity: 0.26; } }
+
+/* Corrimiento al rojo (red-cosmica.html) */
+.band-outside { fill: rgba(239, 231, 218, 0.07); }
+.spec-line { stroke: var(--ink); stroke-width: 2.4; opacity: 0.85; }
+.spec-link { stroke: var(--coral); stroke-width: 1; stroke-dasharray: 3 5; opacity: 0.6; }
+.spec-label {
+  fill: var(--blush);
+  font-family: var(--text);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.redshift-galaxy { transition: fill 0.3s var(--ease); opacity: 0.9; }
+
+/* ============================================================
+   Laboratorios de planetas.html (js/planets-blocks.js)
+   ============================================================ */
+
+.def-body { fill: var(--blush); transition: fill 0.3s var(--ease); }
+.debris-dot { fill: var(--cream); transition: opacity 0.4s var(--ease); }
+.check {
+  font-family: var(--text);
+  font-size: 17px;
+  font-weight: 700;
+}
+.check.is-yes { fill: var(--coral-soft); }
+.check.is-no { fill: rgba(239, 231, 218, 0.35); }
+.check-label {
+  fill: var(--cream);
+  font-family: var(--text);
+  font-size: 13px;
+}
+.check-label.is-off { fill: rgba(239, 231, 218, 0.4); }
+.addr-level.is-planet { fill: var(--coral-soft); }
+
+.sweep { fill: var(--coral); opacity: 0.45; }
+.sweep--prev { fill: var(--blush); opacity: 0.3; }
+.radius-vector { stroke: var(--line); stroke-width: 1.2; stroke-dasharray: 3 5; }
+
+.disc-ring { fill: none; stroke-width: 9; opacity: 0.5; }
+.snow-line {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 2;
+  stroke-dasharray: 6 8;
+  transition: rx 0.3s var(--ease), ry 0.3s var(--ease);
+}
+.seed-planet { transition: r 0.35s var(--ease), fill 0.35s var(--ease); }
+.seed-planet.is-rocky { fill: var(--coral); }
+.seed-planet.is-giant { fill: var(--blush); }
+.seed-tag {
+  fill: rgba(239, 231, 218, 0.55);
+  font-family: var(--text);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.transit-planet { fill: var(--ink-2); stroke: var(--blush); stroke-width: 1; }
+.bary { fill: var(--cream); transition: opacity 0.3s var(--ease); }
+
+:focus-visible { outline: 2px solid var(--coral-soft); outline-offset: 3px; }
